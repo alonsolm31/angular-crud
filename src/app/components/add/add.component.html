@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <form *ngIf="categoriaForm" form #form="ngForm" novalidate
+        (ngSubmit)="submit(form)" class="m-2">
+    <div class="form-group">
+        <label>Clave</label>
+        <input class="form-control" #clave="ngModel" name="name"
+            [(ngModel)]="categoria.clave" required />
+        <span *ngIf="submitted && clave.invalid" class="text-danger">
+            Clave
+        </span>
+    </div>
+    <div class="form-group">
+        <label>Fecha</label>
+        <input class="form-control" #fecha="ngModel" name="name"
+            [(ngModel)]="categoria.fechaCreado" required />
+        <span *ngIf="submitted && fecha.invalid" class="text-danger">
+            Fecha
+        </span>
+    </div>
+    <div class="form-group">
+        <label>Nombre</label>
+        <input class="form-control" #nombre="ngModel" name="name"
+            [(ngModel)]="categoria.nombre" required />
+        <span *ngIf="submitted && nombre.invalid" class="text-danger">
+            Nombre
+        </span>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-secondary m-1" routerLink="/">Atras</button>
+        <button class="btn btn-primary m-1" type="submit">Guardar</button>
+    </div>
+    </form>
+
+<form *ngIf="articuloForm" form #form="ngForm" novalidate
+    (ngSubmit)="submit(form)" class="m-2">
+    <div class="form-group">
+        <label>Clave</label>
+        <input class="form-control" #clave="ngModel" name="clave"
+            [(ngModel)]="articulo.clave" required />
+        <span *ngIf="submitted && clave.invalid" class="text-danger">
+            Clave
+        </span>
+    </div>
+    <div class="form-group">
+        <label>Nombre</label>
+        <input class="form-control" #nombre="ngModel" name="nombre"
+            [(ngModel)]="articulo.nombre" required />
+        <span *ngIf="submitted && nombre.invalid" class="text-danger">
+            Nombre
+        </span>
+    </div>
+    <div class="form-group">
+        <label>Categoria</label>
+        <input class="form-control" #categoria="ngModel" name="categoria"
+            [(ngModel)]="articulo.categoria" required />
+        <span *ngIf="submitted && categoria.invalid" class="text-danger">
+            Categoria
+        </span>
+    </div>
+    <div class="form-group">
+        <label>Precio</label>
+        <input class="form-control" #precios="ngModel" name="precios"
+            [(ngModel)]="articulo.precios[0].precio" required />
+        <span *ngIf="submitted && precios.invalid" class="text-danger">
+            Categoria
+        </span>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-secondary m-1" routerLink="/">Atras</button>
+        <button class="btn btn-primary m-1" type="submit">Guardar</button>
+    </div>
+</form>
+
+<div *ngIf="error.exist" class="alert alert-danger" role="alert">
+    {{error.title}}
+    <p *ngFor="let err of error.list"> {{ err.error }}</p>
+</div>
+
+</div>
